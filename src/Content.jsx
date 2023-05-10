@@ -17,11 +17,11 @@ export function Content() {
 
   useEffect(handleIndexWagers, []);
   return (
-    <div>
+    <div className="container">
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<WagerIndex wagers={wagers} />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/wagerindex" element={<WagerIndex wagers={wagers} />} />
       </Routes>
     </div>
   );

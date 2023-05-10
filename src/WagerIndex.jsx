@@ -2,7 +2,7 @@ export function WagerIndex(props) {
   return (
     <div id="wager-index">
       <h1>All Wagers</h1>
-      <div className="card mb-3" style={{ maxWidth: 2000, maxHeight: 100 }}>
+      <div className="row mb-3" style={{ maxWidth: 2000, maxHeight: 100 }}>
         {props.wagers.map((wager) => (
           <div key={wager.id} className="row g-0">
             <div className="col-md-1">

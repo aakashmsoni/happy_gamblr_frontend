@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { LogoutLink } from "./LogoutLink";
 
 export function Header() {
@@ -73,9 +73,9 @@ export function Header() {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <div className="dropdown-item" href="#">
                         <LogoutLink />
-                      </a>
+                      </div>
                     </li>
                   </ul>
                 </li>
