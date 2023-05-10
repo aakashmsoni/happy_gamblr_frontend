@@ -1,22 +1,62 @@
-export function WagerIndex() {
+export function WagerIndex(props) {
   return (
-    <div className="card mb-3" style="max-width: 540px;">
-      <div className="row g-0">
-        <div className="col-md-4">
-          <img src="..." className="img-fluid rounded-start" alt="..." />
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural lead-in to additional content. This content
-              is a little bit longer.
-            </p>
-            <p className="card-text">
-              <small className="text-body-secondary">Last updated 3 mins ago</small>
-            </p>
+    <div id="wager-index">
+      <h1>All Wagers</h1>
+      <div className="card mb-3" style={{ maxWidth: 2000, maxHeight: 100 }}>
+        {props.wagers.map((wager) => (
+          <div key={wager.id} className="row g-0">
+            <div className="col-md-1">
+              <img
+                src="https://thumbs.dreamstime.com/b/simple-basketball-illustration-logo-club-218748709.jpg"
+                style={{ maxWidth: 120 }}
+                className="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div className="col-md-1">
+              <div className="card-body text-bg-secondary">
+                <h5 className="card-title">Date</h5>
+                <p className="card-text">{wager.created_at}</p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body">
+                <h5 className="card-title">Sport</h5>
+                <p className="card-text">{wager.sport_id}</p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body">
+                <h5 className="card-title">Bet Type</h5>
+                <p className="card-text">{wager.bet_type_id}</p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body">
+                <h5 className="card-title">Wager Amount</h5>
+                <p className="card-text">${wager.wager_amount}</p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body">
+                <h5 className="card-title">Odds</h5>
+                <p className="card-text">{wager.odds}</p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body">
+                <h5 className="card-title">Win/Loss</h5>
+                <p className="card-text">{wager.win}</p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body">
+                <h5 className="card-title">Profit/Loss</h5>
+                <p className="card-text">${wager.profit_loss}</p>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
