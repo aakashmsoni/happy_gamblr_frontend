@@ -8,7 +8,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
-        <Content />
+        <div className="p-5">
+          <Content />
+        </div>
         <Footer />
       </BrowserRouter>
     </div>

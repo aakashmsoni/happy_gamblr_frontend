@@ -9,7 +9,7 @@ export function Content() {
   const [wagers, setWagers] = useState([]);
 
   const handleIndexWagers = () => {
-    axios.get("http://localhost:3000/wagers.json").then((response) => {
+    axios.get("http://localhost:3000/wagers.json").then(response => {
       console.log(response);
       setWagers(response.data);
     });
@@ -17,7 +17,7 @@ export function Content() {
 
   useEffect(handleIndexWagers, []);
   return (
-    <div className="container">
+    <div className="m-5">
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Login />} />
