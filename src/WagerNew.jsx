@@ -7,57 +7,72 @@ export function WagerNew(props) {
   };
 
   return (
-    <div id="wager-new">
-      <h2>New Wager</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="sport_id">Choose a sport:</label>
+    <div id="wager-new" className="row">
+      <div className="col-sm-4 ms-5 mt-5">
+        <div className="card text-center m-5 pb-3 pt-2">
+          <h2>New Wager</h2>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label className="p-1" htmlFor="sport_id">
+                Choose a sport:
+              </label>
+            </div>
+            <div>
+              <select className="form-select mb-1" name="sport_id" type="number">
+                <option value="1">NBA</option>
+                <option value="2">MLB</option>
+                <option value="3">NCAA</option>
+                <option value="4">MLS</option>
+                <option value="5">NHL</option>
+                <option value="6">COMBO</option>
+              </select>
+            </div>
+            <div>
+              <label className="p-1" htmlFor="bet_type_id">
+                Choose a bet type:
+              </label>
+            </div>
+            <select className="form-select mb-1" name="bet_type_id" type="number">
+              <option value="1">MONEYLINE</option>
+              <option value="2">PARLAY</option>
+              <option value="3">SPREAD</option>
+              <option value="4">OVER/UNDER</option>
+              <option value="5">SINGLE</option>
+              <option value="6">ROUND ROBIN</option>
+            </select>
+            <div>
+              <label className="p-1" htmlFor="win">
+                Enter the result of the bet:
+              </label>
+            </div>
+            <select className="form-select mb-1" name="win" type="boolean">
+              <option value="true">Win</option>
+              <option value="false">Loss</option>
+            </select>
+            <div>
+              <label className="p-1 mt-2" htmlFor="wager_amount">
+                Enter your wager amount:
+              </label>
+            </div>
+            <div>
+              <input defaultValue="0.00" name="wager_amount" type="decimal"></input>
+            </div>
+            <div>
+              <label className="p-1 pt-2" htmlFor="odds">
+                Enter the odds:
+              </label>
+            </div>
+            <div>
+              <input defaultValue="0" name="odds" type="number"></input>
+            </div>
+
+            <br />
+            <button className="btn btn-secondary pb-1" type="submit">
+              Submit
+            </button>
+          </form>
         </div>
-        <div>
-          <select name="sport_id" type="number">
-            <option value="1">NBA</option>
-            <option value="2">MLB</option>
-            <option value="3">NCAA</option>
-            <option value="4">MLS</option>
-            <option value="5">NHL</option>
-            <option value="6">COMBO</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="bet_type_id">Choose a bet type:</label>
-        </div>
-        <select name="bet_type_id" type="number">
-          <option value="1">MONEYLINE</option>
-          <option value="2">PARLAY</option>
-          <option value="3">SPREAD</option>
-          <option value="4">OVER/UNDER</option>
-          <option value="5">SINGLE</option>
-          <option value="6">ROUND ROBIN</option>
-        </select>
-        <div>
-          <label htmlFor="wager_amount">Enter your wager amount:</label>
-        </div>
-        <div>
-          <input defaultValue="e.g. 10.00" name="wager_amount" type="decimal"></input>
-        </div>
-        <div>
-          <label htmlFor="odds">Enter the odds:</label>
-        </div>
-        <div>
-          <input defaultValue="0" name="odds" type="number"></input>
-        </div>
-        <div>
-          <label htmlFor="win">Enter the result of the bet:</label>
-        </div>
-        <select name="win" type="boolean">
-          <option value="true">Win</option>
-          <option value="false">Loss</option>
-        </select>
-        <br />
-        <button className="btn btn-secondary mt-3 me-3" type="submit">
-          Submit
-        </button>
-      </form>
+      </div>
     </div>
   );
 }

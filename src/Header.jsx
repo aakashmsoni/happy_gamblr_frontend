@@ -60,7 +60,7 @@ export function Header() {
                     Dropdown
                   </a>
                   <ul className="dropdown-menu dropdown-menu-dark">
-                    <li>
+                    {/* <li>
                       <a className="dropdown-item" href="#">
                         Action
                       </a>
@@ -69,7 +69,7 @@ export function Header() {
                       <a className="dropdown-item" href="#">
                         Another action
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
