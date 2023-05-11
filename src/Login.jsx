@@ -9,20 +9,20 @@ if (jwt) {
 export function Login() {
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/sessions.json", params)
-      .then((response) => {
+      .then(response => {
         console.log(response.data);
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
         window.location.href = "/wagerindex"; // Change this to hide a modal, redirect to a specific page, etc.
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error.response);
         setErrors(["Invalid email or password"]);
       });
@@ -30,20 +30,27 @@ export function Login() {
 
   return (
     <div id="login">
-      <h1>Login</h1>
       <ul>
-        {errors.map((error) => (
+        {errors.map(error => (
           <li key={error}>{error}</li>
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Email: <input name="email" type="email" />
+          <label htmlFor="wager_amount">Email: </label>
         </div>
         <div>
-          Password: <input name="password" type="password" />
+          <input name="email" type="email" />
         </div>
-        <button type="submit">Login</button>
+        <div>
+          <label htmlFor="wager_amount">Password: </label>
+        </div>
+        <div>
+          <input name="password" type="password" />
+        </div>
+        <button className="btn btn-dark mt-2" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

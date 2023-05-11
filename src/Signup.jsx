@@ -4,44 +4,57 @@ import { useState } from "react";
 export function Signup() {
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/users.json", params)
-      .then((response) => {
+      .then(response => {
         console.log(response.data);
         event.target.reset();
         window.location.href = "/";
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error.response.data.errors);
         setErrors(error.response.data.errors);
       });
   };
   return (
     <div id="signup">
-      <h1>Signup</h1>
       <ul>
-        {errors.map((error) => (
+        {errors.map(error => (
           <li key={error}>{error}</li>
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          <label htmlFor="wager_amount">Name: </label>
         </div>
         <div>
-          Email: <input name="email" type="email" />
+          <input name="name" type="text" />
         </div>
         <div>
-          Password: <input name="password" type="password" />
+          <label htmlFor="wager_amount">Email: </label>
         </div>
         <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+          <input name="email" type="email" />
         </div>
-        <button type="submit">Signup</button>
+        <div>
+          <label htmlFor="wager_amount">Password: </label>
+        </div>
+        <div>
+          <input name="password" type="password" />
+        </div>
+        <div>
+          <label htmlFor="wager_amount">Confirm password: </label>
+        </div>
+        <div>
+          <input name="password_confirmation" type="password" />
+        </div>
+        <button className="btn btn-dark mt-2" type="submit">
+          Signup
+        </button>
       </form>
     </div>
   );
