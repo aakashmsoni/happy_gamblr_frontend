@@ -1,9 +1,10 @@
 import moment from "moment";
+import "./WagerIndex.scoped.scss";
 
 export function WagerIndex(props) {
   return (
     <div id="wager-index">
-      <h1>All Wagers</h1>
+      <h1 className="display-5">All Wagers</h1>
       {/* <span className="border-3">
         <div className="container" style={{ maxWidth: 2000, maxHeight: 100 }}>
           <div className="row">

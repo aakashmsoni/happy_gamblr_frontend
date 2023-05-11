@@ -10,6 +10,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        <Header />
         {localStorage.jwt === undefined ? (
           <div className="row">
             <div className="col-sm-4 ms-5 mt-5">
@@ -24,7 +25,6 @@ function App() {
           </div>
         ) : (
           <div>
-            <Header />
             <div className="p-4">
               <Content />
             </div>
