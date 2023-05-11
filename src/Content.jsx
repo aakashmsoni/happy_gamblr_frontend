@@ -40,6 +40,14 @@ export function Content() {
     }
   };
 
+  const handleWin = wager => {
+    if (wager.win == true) {
+      return "Won";
+    } else {
+      return "Lost";
+    }
+  };
+
   const handleUpdateWager = (params, id) => {
     axios.patch(`http://localhost:3000/wagers/${id}.json`, params).then(response => {
       console.log(response);
@@ -83,6 +91,7 @@ export function Content() {
               onShowWager={handleShowWager}
               onDeleteWager={handleShowDeleteConfirmation}
               onWinColor={handleWinColumnColor}
+              onWin={handleWin}
             />
           }
         />

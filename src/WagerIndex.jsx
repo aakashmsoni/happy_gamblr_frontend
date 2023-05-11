@@ -79,15 +79,15 @@ export function WagerIndex(props) {
           </div>
         ))}
       </div> */}
-      <table className="table table-bordered">
+      <table className="table table-bordered table-hover table-light">
         <thead>
-          <tr>
+          <tr className="table-active">
             <th scope="col">Date</th>
             <th scope="col">Sport</th>
             <th scope="col">Bet Type</th>
             <th scope="col">Wager Amount</th>
             <th scope="col">Odds</th>
-            <th scope="col">Win</th>
+            <th scope="col">Result</th>
             <th scope="col">Profit/Loss</th>
           </tr>
         </thead>
@@ -99,8 +99,19 @@ export function WagerIndex(props) {
               <td>{wager.bet_type.name}</td>
               <td>${wager.wager_amount}</td>
               <td>{wager.odds}</td>
-              <td className={props.onWinColor(wager)}>{wager.win}</td>
-              <td>${wager.profit_loss}</td>
+              <td>{props.onWin(wager)}</td>
+              <td className={props.onWinColor(wager)}>${wager.profit_loss}</td>
+              <td>
+                <button type="button" className="btn btn-primary ms-5" onClick={() => props.onShowWager(wager)}>
+                  {" "}
+                  Update{" "}
+                </button>
+              </td>
+              <td>
+                <button type="button" className="btn btn-danger ms-5" onClick={() => props.onDeleteWager(wager)}>
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
 
