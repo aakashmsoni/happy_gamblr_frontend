@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export function WagerIndex(props) {
   return (
     <div id="wager-index">
@@ -26,43 +28,36 @@ export function WagerIndex(props) {
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Date</h5>
-                <p className="card-text fs-6">{wager.created_at}</p>
+                <p className="card-text fs-6">{moment(wager.created_at).format("lll")}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Sport</h5>
                 <p className="card-text">{wager.sport.name}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Bet Type</h5>
                 <p className="card-text">{wager.bet_type.name}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Wager Amount</h5>
                 <p className="card-text">${wager.wager_amount}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Odds</h5>
                 <p className="card-text">{wager.odds}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Win/Loss</h5>
                 <p className="card-text">{wager.win}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Profit/Loss</h5>
                 <p className="card-text">${wager.profit_loss}</p>
               </div>
             </div>
