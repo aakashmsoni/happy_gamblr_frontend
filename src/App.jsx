@@ -28,9 +28,9 @@ function App() {
             <div className="p-4">
               <Content />
             </div>
-            <Footer />
           </div>
         )}
+        <Footer />
       </BrowserRouter>
     </div>
   );
