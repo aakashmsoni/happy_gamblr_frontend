@@ -49,7 +49,7 @@ export function Content() {
   };
 
   const handleDestroyWager = wager => {
-    axios.delete(`http://localhost:3000/wagers/${wager.id}`).then(response => {
+    axios.delete(`http://localhost:3000/wagers/${wager.id}.json`).then(response => {
       console.log(response.data);
       setWagers(wagers.filter(w => w.id !== wager.id));
       handleClose();
