@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { WagerIndex } from "./WagerIndex";
 import { Signup } from "./Signup";
-import { Login } from "./Login";
+// import { Login } from "./Login";
 import { Route, Routes } from "react-router-dom";
 import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
@@ -87,13 +87,19 @@ export function Content() {
     // setIsCreateWagerVisible(false);
   };
 
+  // const handleRoot = () => {
+  //   if (localStorage.jwt === undefined) {
+
+  //   }
+  // }
+
   useEffect(handleIndexWagers, []);
   return (
     <div className="m-5">
       <Routes>
         <Route path="/wagers-new" element={<WagerNew onCreateWager={handleCreateWager} />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<WagerIndex />} /> */}
         <Route
           path="/wagerindex"
           element={
