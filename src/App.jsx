@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         {localStorage.jwt === undefined ? (
           <div className="row">
-            <div className="col-sm-4 mx-auto">
+            <div className="col-sm-4 ms-5 mt-5">
               <div className="card text-center m-5 pb-3">
                 <Login />
               </div>
