@@ -32,6 +32,14 @@ export function Content() {
     });
   };
 
+  const handleWinColumnColor = wager => {
+    if (wager.win == true) {
+      return "table-success";
+    } else {
+      return "table-danger";
+    }
+  };
+
   const handleUpdateWager = (params, id) => {
     axios.patch(`http://localhost:3000/wagers/${id}.json`, params).then(response => {
       console.log(response);
@@ -70,7 +78,12 @@ export function Content() {
         <Route
           path="/wagerindex"
           element={
-            <WagerIndex wagers={wagers} onShowWager={handleShowWager} onDeleteWager={handleShowDeleteConfirmation} />
+            <WagerIndex
+              wagers={wagers}
+              onShowWager={handleShowWager}
+              onDeleteWager={handleShowDeleteConfirmation}
+              onWinColor={handleWinColumnColor}
+            />
           }
         />
       </Routes>

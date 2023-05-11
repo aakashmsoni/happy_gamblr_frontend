@@ -99,7 +99,7 @@ export function WagerIndex(props) {
               <td>{wager.bet_type.name}</td>
               <td>${wager.wager_amount}</td>
               <td>{wager.odds}</td>
-              <td>{wager.win}</td>
+              <td className={props.onWinColor(wager)}>{wager.win}</td>
               <td>${wager.profit_loss}</td>
             </tr>
           ))}
