@@ -6,14 +6,22 @@ import { Login } from "./Login";
 import { Route, Routes } from "react-router-dom";
 import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
+import { WagerDelete } from "./WagerDelete";
 
 export function Content() {
   const [wagers, setWagers] = useState([]);
-  const [isShowWagerVisible, setIsShowWagerVisible] = useState(true);
+  const [isShowWagerVisible, setIsShowWagerVisible] = useState(false);
+  const [isDeleteWagerVisible, setIsDeleteWagerVisible] = useState(false);
   const [currentWager, setCurrentWager] = useState([]);
 
   const handleShowWager = wager => {
     setIsShowWagerVisible(true);
+    setCurrentWager(wager);
+  };
+
+  const handleShowDeleteConfirmation = wager => {
+    // console.log(wager);
+    setIsDeleteWagerVisible(true);
     setCurrentWager(wager);
   };
 
@@ -39,8 +47,18 @@ export function Content() {
       );
     });
   };
+
+  const handleDestroyWager = wager => {
+    axios.delete(`http://localhost:3000/wagers/${wager.id}`).then(response => {
+      console.log(response.data);
+      setWagers(wagers.filter(w => w.id !== wager.id));
+      handleClose();
+    });
+  };
+
   const handleClose = () => {
     setIsShowWagerVisible(false);
+    setIsDeleteWagerVisible(false);
   };
 
   useEffect(handleIndexWagers, []);
@@ -49,10 +67,18 @@ export function Content() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Login />} />
-        <Route path="/wagerindex" element={<WagerIndex wagers={wagers} onShowWager={handleShowWager} />} />
+        <Route
+          path="/wagerindex"
+          element={
+            <WagerIndex wagers={wagers} onShowWager={handleShowWager} onDeleteWager={handleShowDeleteConfirmation} />
+          }
+        />
       </Routes>
       <Modal show={isShowWagerVisible} onClose={handleClose}>
         <WagerShow wager={currentWager} onUpdateWager={handleUpdateWager} />
+      </Modal>
+      <Modal show={isDeleteWagerVisible} onClose={handleClose}>
+        <WagerDelete wager={currentWager} onDeleteConfirmation={handleDestroyWager} onClose={handleClose} />
       </Modal>
     </div>
   );

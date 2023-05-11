@@ -33,13 +33,13 @@ export function WagerIndex(props) {
             <div className="col-md-1">
               <div className="card-body border-primary">
                 <h5 className="card-title">Sport</h5>
-                <p className="card-text">{wager.sport_id}</p>
+                <p className="card-text">{wager.sport.name}</p>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
                 <h5 className="card-title">Bet Type</h5>
-                <p className="card-text">{wager.bet_type_id}</p>
+                <p className="card-text">{wager.bet_type.name}</p>
               </div>
             </div>
             <div className="col-md-1">
@@ -68,19 +68,17 @@ export function WagerIndex(props) {
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Wager Update</h5>
-                <p className="card-text">
-                  <button type="button" className="btn btn-primary mx-auto" onClick={() => props.onShowWager(wager)}>
-                    {" "}
-                    Update{" "}
-                  </button>
-                </p>
+                <button type="button" className="btn btn-primary mx-auto" onClick={() => props.onShowWager(wager)}>
+                  {" "}
+                  Update{" "}
+                </button>
               </div>
             </div>
             <div className="col-md-1">
               <div className="card-body border-primary">
-                <h5 className="card-title">Wager Delete</h5>
-                <p className="card-text"></p>
+                <button type="button" className="btn btn-danger" onClick={() => props.onDeleteWager(wager)}>
+                  Delete
+                </button>
               </div>
             </div>
           </div>

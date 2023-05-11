@@ -10,35 +10,52 @@ export function WagerShow(props) {
       <h2>Update Wager</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="sport_id">Sport ID:</label>
+          <label htmlFor="sport_id">Update Sport:</label>
         </div>
         <div>
-          <input defaultValue={props.wager.sport_id} name="sport_id" type="number"></input>
+          <select name="sport_id" type="number">
+            <option value="1">NBA</option>
+            <option value="2">MLB</option>
+            <option value="3">NCAA</option>
+            <option value="4">MLS</option>
+            <option value="5">NHL</option>
+            <option value="6">COMBO</option>
+          </select>
         </div>
         <div>
-          <label htmlFor="bet_type_id">Bet Type ID:</label>
+          <label htmlFor="bet_type_id">Update Bet Type:</label>
         </div>
+        <select name="bet_type_id" type="number">
+          <option value="1">MONEYLINE</option>
+          <option value="2">PARLAY</option>
+          <option value="3">SPREAD</option>
+          <option value="4">OVER/UNDER</option>
+          <option value="5">SINGLE</option>
+          <option value="6">ROUND ROBIN</option>
+        </select>
         <div>
-          <input defaultValue={props.wager.bet_type_id} name="bet_type_id" type="number"></input>
-        </div>
-        <div>
-          <label htmlFor="wager_amount">Wager Amount</label>
+          <label htmlFor="wager_amount">Update Wager Amount:</label>
         </div>
         <div>
           <input defaultValue={props.wager.wager_amount} name="sport_id" type="decimal"></input>
         </div>
         <div>
-          <label htmlFor="odds">Odds</label>
+          <label htmlFor="odds">Update Odds:</label>
         </div>
         <div>
           <input defaultValue={props.wager.odds} name="odds" type="number"></input>
         </div>
         <div>
-          <label htmlFor="win">Win:</label>
+          <label htmlFor="win">Update Win/Loss:</label>
         </div>
-        <div>
-          <input defaultValue={props.wager.win} name="win" type="boolean"></input>
-        </div>
+        <select name="win" type="boolean">
+          <option value="true">Win</option>
+          <option value="false">Loss</option>
+        </select>
+        <br />
+        <button className="btn btn-secondary mt-3 me-3" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
