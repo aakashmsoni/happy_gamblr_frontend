@@ -13,11 +13,11 @@ function App() {
         {localStorage.jwt === undefined ? (
           <div className="row">
             <div className="col-sm-4 ms-5 mt-5">
-              <div className="card text-center m-5 pb-3">
+              <div className="card text-center m-5 p-2 ps-3 pe-3">
                 <Login />
               </div>
               {/* <p className="text-center">or</p> */}
-              <div className="card text-center m-5 pb-3 ps-3 pe-3">
+              <div className="card text-center m-5 p-2 pb-3 ps-3 pe-3">
                 <Signup />
               </div>
             </div>

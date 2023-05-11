@@ -28,30 +28,31 @@ export function Signup() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-floating">
+          <input className="form-control" name="name" type="text" placeholder="name" />
           <label htmlFor="wager_amount">Name: </label>
         </div>
-        <div>
-          <input name="name" type="text" />
-        </div>
-        <div>
+
+        <div className="form-floating">
+          <input className="form-control" name="email" type="email" placeholder="test@test.com" />
           <label htmlFor="wager_amount">Email: </label>
         </div>
-        <div>
-          <input name="email" type="email" />
-        </div>
-        <div>
+
+        <div className="form-floating">
+          <input className="form-control" placeholder="password" name="password" type="password" />
           <label htmlFor="wager_amount">Password: </label>
         </div>
-        <div>
-          <input name="password" type="password" />
-        </div>
-        <div>
+
+        <div className="form-floating">
+          <input
+            className="form-control"
+            placeholder="password_confirmation"
+            name="password_confirmation"
+            type="password"
+          />
           <label htmlFor="wager_amount">Confirm password: </label>
         </div>
-        <div>
-          <input name="password_confirmation" type="password" />
-        </div>
+
         <button className="btn btn-dark mt-2" type="submit">
           Signup
         </button>

@@ -54,16 +54,17 @@ export function WagerNew(props) {
                 Enter your wager amount:
               </label>
             </div>
-            <div>
-              <input defaultValue="0.00" name="wager_amount" type="decimal"></input>
+            <div className="input-group">
+              <span className="input-group-text">$</span>
+              <input className="form-control" placeholder="0.00" name="wager_amount" type="decimal"></input>
             </div>
             <div>
               <label className="p-1 pt-2" htmlFor="odds">
                 Enter the odds:
               </label>
             </div>
-            <div>
-              <input defaultValue="0" name="odds" type="number"></input>
+            <div className="input-group">
+              <input className="form-control" placeholder="-110" name="odds" type="number"></input>
             </div>
 
             <br />

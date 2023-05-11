@@ -36,18 +36,16 @@ export function Login() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="wager_amount">Email: </label>
+        <div className="form-floating">
+          <input className="form-control" name="email" type="email" placeholder="test@test.com" />
+          <label htmlFor="email">Email: </label>
         </div>
-        <div>
-          <input name="email" type="email" />
+
+        <div className="form-floating">
+          <input className="form-control" placeholder="password" name="password" type="password" />
+          <label htmlFor="password">Password: </label>
         </div>
-        <div>
-          <label htmlFor="wager_amount">Password: </label>
-        </div>
-        <div>
-          <input name="password" type="password" />
-        </div>
+
         <button className="btn btn-dark mt-2" type="submit">
           Login
         </button>
