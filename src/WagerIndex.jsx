@@ -4,7 +4,7 @@ export function WagerIndex(props) {
   return (
     <div id="wager-index">
       <h1>All Wagers</h1>
-      <span className="border-3">
+      {/* <span className="border-3">
         <div className="container" style={{ maxWidth: 2000, maxHeight: 100 }}>
           <div className="row">
             <div className="col-2">Date</div>
@@ -14,8 +14,8 @@ export function WagerIndex(props) {
             <div className="col-2">Date</div>
           </div>
         </div>
-      </span>
-      <div className="card border-primary" style={{ maxWidth: 2000, maxHeight: 100 }}>
+      </span> */}
+      {/* <div className="card border-primary" style={{ maxWidth: 2000, maxHeight: 100 }}>
         {props.wagers.map(wager => (
           <div key={wager.id} className="wagers row">
             <div className="col-md-1">
@@ -78,7 +78,45 @@ export function WagerIndex(props) {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Sport</th>
+            <th scope="col">Bet Type</th>
+            <th scope="col">Wager Amount</th>
+            <th scope="col">Odds</th>
+            <th scope="col">Win</th>
+            <th scope="col">Profit/Loss</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.wagers.map(wager => (
+            <tr key={wager.id}>
+              <td>{moment(wager.created_at).format("lll")}</td>
+              <td>{wager.sport.name}</td>
+              <td>{wager.bet_type.name}</td>
+              <td>${wager.wager_amount}</td>
+              <td>{wager.odds}</td>
+              <td>{wager.win}</td>
+              <td>${wager.profit_loss}</td>
+            </tr>
+          ))}
+
+          {/* <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colSpan="2">Larry the Bird</td>
+            <td>@twitter</td> */}
+          {/* </tr> */}
+        </tbody>
+      </table>
     </div>
   );
 }
