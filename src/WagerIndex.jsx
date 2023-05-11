@@ -66,6 +66,23 @@ export function WagerIndex(props) {
                 <p className="card-text">${wager.profit_loss}</p>
               </div>
             </div>
+            <div className="col-md-1">
+              <div className="card-body border-primary">
+                <h5 className="card-title">Wager Update</h5>
+                <p className="card-text">
+                  <button type="button" className="btn btn-primary mx-auto" onClick={() => props.onShowWager(wager)}>
+                    {" "}
+                    Update{" "}
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <div className="card-body border-primary">
+                <h5 className="card-title">Wager Delete</h5>
+                <p className="card-text"></p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
