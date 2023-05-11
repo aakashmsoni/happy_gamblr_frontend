@@ -1,16 +1,17 @@
-export function WagerShow(props) {
+export function WagerNew(props) {
   const handleSubmit = event => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onUpdateWager(params, props.wager.id);
     event.target.reset();
+    props.onCreateWager(params);
   };
+
   return (
-    <div id="wager-show">
-      <h2>Update Wager</h2>
+    <div id="wager-new">
+      <h2>New Wager</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="sport_id">Update Sport:</label>
+          <label htmlFor="sport_id">Choose a sport:</label>
         </div>
         <div>
           <select name="sport_id" type="number">
@@ -23,7 +24,7 @@ export function WagerShow(props) {
           </select>
         </div>
         <div>
-          <label htmlFor="bet_type_id">Update Bet Type:</label>
+          <label htmlFor="bet_type_id">Choose a bet type:</label>
         </div>
         <select name="bet_type_id" type="number">
           <option value="1">MONEYLINE</option>
@@ -34,19 +35,19 @@ export function WagerShow(props) {
           <option value="6">ROUND ROBIN</option>
         </select>
         <div>
-          <label htmlFor="wager_amount">Update Wager Amount:</label>
+          <label htmlFor="wager_amount">Enter your wager amount:</label>
         </div>
         <div>
-          <input defaultValue={props.wager.wager_amount} name="wager_amount" type="decimal"></input>
+          <input defaultValue="e.g. 10.00" name="wager_amount" type="decimal"></input>
         </div>
         <div>
-          <label htmlFor="odds">Update Odds:</label>
+          <label htmlFor="odds">Enter the odds:</label>
         </div>
         <div>
-          <input defaultValue={props.wager.odds} name="odds" type="number"></input>
+          <input defaultValue="0" name="odds" type="number"></input>
         </div>
         <div>
-          <label htmlFor="win">Update Win/Loss:</label>
+          <label htmlFor="win">Enter the result of the bet:</label>
         </div>
         <select name="win" type="boolean">
           <option value="true">Win</option>

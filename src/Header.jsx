@@ -1,12 +1,13 @@
 // import { Link } from "react-router-dom";
 import { LogoutLink } from "./LogoutLink";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
     <header>
       <nav className="navbar navbar-dark bg-dark fixed-top">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             Happy Gamblr
           </a>
           <button
@@ -39,14 +40,14 @@ export function Header() {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#wager-index">
+                  <Link className="nav-link active" aria-current="page" to="/wagerindex">
                     My Bets
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    About
-                  </a>
+                  <Link className="nav-link" to="/wagers-new">
+                    New Bet
+                  </Link>
                 </li>
                 <li className="nav-item dropdown">
                   <a

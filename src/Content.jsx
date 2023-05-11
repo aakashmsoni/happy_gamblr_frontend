@@ -7,12 +7,14 @@ import { Route, Routes } from "react-router-dom";
 import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
 import { WagerDelete } from "./WagerDelete";
+import { WagerNew } from "./WagerNew";
 
 export function Content() {
   const [wagers, setWagers] = useState([]);
   const [isShowWagerVisible, setIsShowWagerVisible] = useState(false);
   const [isDeleteWagerVisible, setIsDeleteWagerVisible] = useState(false);
   const [currentWager, setCurrentWager] = useState([]);
+  // const [isCreateWagerVisible, setIsCreateWagerVisible] = useState(false);
 
   const handleShowWager = wager => {
     setIsShowWagerVisible(true);
@@ -48,6 +50,13 @@ export function Content() {
     }
   };
 
+  const handleCreateWager = params => {
+    axios.post("http://localhost:3000/wagers.json", params).then(response => {
+      console.log(response);
+      setWagers([...wagers, response.data]);
+    });
+  };
+
   const handleUpdateWager = (params, id) => {
     axios.patch(`http://localhost:3000/wagers/${id}.json`, params).then(response => {
       console.log(response);
@@ -75,12 +84,14 @@ export function Content() {
   const handleClose = () => {
     setIsShowWagerVisible(false);
     setIsDeleteWagerVisible(false);
+    // setIsCreateWagerVisible(false);
   };
 
   useEffect(handleIndexWagers, []);
   return (
     <div className="m-5">
       <Routes>
+        <Route path="/wagers-new" element={<WagerNew onCreateWager={handleCreateWager} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Login />} />
         <Route
@@ -102,6 +113,9 @@ export function Content() {
       <Modal show={isDeleteWagerVisible} onClose={handleClose}>
         <WagerDelete wager={currentWager} onDeleteConfirmation={handleDestroyWager} onClose={handleClose} />
       </Modal>
+      {/* <Modal show={isCreateWagerVisible} onClose={handleClose}>
+        <WagerNew onCreateWager={handleCreateWager} />
+      </Modal> */}
     </div>
   );
 }
