@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom";
 import { LogoutLink } from "./LogoutLink";
 import { Link } from "react-router-dom";
+import "./Header.scoped.scss";
 
 export function Header() {
   return (
@@ -8,7 +9,8 @@ export function Header() {
       <nav className="navbar navbar-dark bg-dark fixed-top">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Happy Gamblr
+            {/* <img src="/src/assets/hlogo.jpeg" alt="logo" /> */}
+            HappyGamblr
           </a>
           <button
             className="navbar-toggler"
