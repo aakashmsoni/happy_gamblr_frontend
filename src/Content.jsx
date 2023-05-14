@@ -8,7 +8,8 @@ import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
 import { WagerDelete } from "./WagerDelete";
 import { WagerNew } from "./WagerNew";
-import { OddsIndex } from "./MoneylineIndex";
+import { MoneylineIndex } from "./MoneylineIndex";
+import { SpreadIndex } from "./SpreadIndex";
 
 export function Content() {
   const [wagers, setWagers] = useState([]);
@@ -123,7 +124,8 @@ export function Content() {
             />
           }
         />
-        <Route path="/odds/moneyline" element={<OddsIndex odds={odds} />} />
+        <Route path="/odds/moneyline" element={<MoneylineIndex odds={odds} />} />
+        <Route path="/odds/spread" element={<SpreadIndex odds={odds} />} />
       </Routes>
 
       <Modal show={isShowWagerVisible} onClose={handleClose}>

@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export function OddsIndex(props) {
+export function MoneylineIndex(props) {
   return (
     <div>
       {props.odds.map(game => (
