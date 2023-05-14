@@ -8,12 +8,15 @@ import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
 import { WagerDelete } from "./WagerDelete";
 import { WagerNew } from "./WagerNew";
+import { OddsIndex } from "./OddsIndex";
 
 export function Content() {
   const [wagers, setWagers] = useState([]);
   const [isShowWagerVisible, setIsShowWagerVisible] = useState(false);
   const [isDeleteWagerVisible, setIsDeleteWagerVisible] = useState(false);
   const [currentWager, setCurrentWager] = useState([]);
+  const [odds, setOdds] = useState([])
+
   // const [isCreateWagerVisible, setIsCreateWagerVisible] = useState(false);
 
   const handleShowWager = wager => {
@@ -33,6 +36,13 @@ export function Content() {
       setWagers(response.data);
     });
   };
+
+  const handleIndexOdds = () => {
+    axios.get("http://localhost:3000/odds.json").then((response) => {
+      console.log(response);
+      setOdds(response.data);
+    })
+  }
 
   const handleWinColumnColor = wager => {
     if (wager.win == true) {
@@ -94,6 +104,7 @@ export function Content() {
   // }
 
   useEffect(handleIndexWagers, []);
+  useEffect(handleIndexOdds, []);
   return (
     <div className="m-5">
       <Routes>
@@ -112,7 +123,10 @@ export function Content() {
             />
           }
         />
+        <Route path="/odds" element={<OddsIndex odds={odds}/>} />
       </Routes>
+
+      
       <Modal show={isShowWagerVisible} onClose={handleClose}>
         <WagerShow wager={currentWager} onUpdateWager={handleUpdateWager} />
       </Modal>
