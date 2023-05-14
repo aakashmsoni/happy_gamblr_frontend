@@ -76,9 +76,9 @@ export function Header() {
                       </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="/odds/overunder">
                         Over/Under
-                      </a>
+                      </Link>
                     </li>
                     {/* <li>
                       <hr className="dropdown-divider" />

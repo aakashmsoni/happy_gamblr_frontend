@@ -10,6 +10,7 @@ import { WagerDelete } from "./WagerDelete";
 import { WagerNew } from "./WagerNew";
 import { MoneylineIndex } from "./MoneylineIndex";
 import { SpreadIndex } from "./SpreadIndex";
+import { OverUnderIndex } from "./OverUnderIndex";
 
 export function Content() {
   const [wagers, setWagers] = useState([]);
@@ -126,6 +127,7 @@ export function Content() {
         />
         <Route path="/odds/moneyline" element={<MoneylineIndex odds={odds} />} />
         <Route path="/odds/spread" element={<SpreadIndex odds={odds} />} />
+        <Route path="/odds/overunder" element={<OverUnderIndex odds={odds} />} />
       </Routes>
 
       <Modal show={isShowWagerVisible} onClose={handleClose}>
