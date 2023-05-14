@@ -48,8 +48,11 @@ export function Header() {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/wagers-new">
-                    New Bet
+                    Log New Bet
                   </Link>
+                </li>
+                <li className="nav-item">
+                  <LogoutLink />
                 </li>
                 <li className="nav-item dropdown">
                   <a
@@ -59,27 +62,32 @@ export function Header() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Dropdown
+                    What are the Odds?
                   </a>
                   <ul className="dropdown-menu dropdown-menu-dark">
-                    {/* <li>
+                    <li>
                       <a className="dropdown-item" href="#">
-                        Action
+                        Moneyline
                       </a>
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
-                        Another action
+                        Spread
                       </a>
-                    </li> */}
+                    </li>
                     <li>
+                      <a className="dropdown-item" href="#">
+                        Over/Under
+                      </a>
+                    </li>
+                    {/* <li>
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
                       <div className="dropdown-item" href="#">
                         <LogoutLink />
                       </div>
-                    </li>
+                    </li> */}
                   </ul>
                 </li>
               </ul>
