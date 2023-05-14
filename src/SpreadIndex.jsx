@@ -1,10 +1,11 @@
 import moment from "moment";
+import "./SpreadIndex.scoped.scss";
 
 export function SpreadIndex(props) {
   return (
-    <div>
+    <div id="spread-index">
       {props.odds.map(game => (
-        <div key={game.id} className="card w-75 mx-auto mb-5">
+        <div key={game.id} className="card w-50 ms-0 mb-5">
           <table className="table table-bordered">
             <thead>
               <tr>

@@ -1,10 +1,11 @@
 import moment from "moment";
+import "./MoneylineIndex.scoped.scss";
 
 export function MoneylineIndex(props) {
   return (
-    <div>
+    <div id="moneyline-index">
       {props.odds.map(game => (
-        <div key={game.id} className="card w-75 mx-auto mb-5">
+        <div key={game.id} className="card w-50 ms-0 mb-5">
           <table className="table table-bordered">
             <thead>
               <tr>

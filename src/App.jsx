@@ -4,7 +4,6 @@ import { Footer } from "./Footer";
 import { BrowserRouter } from "react-router-dom";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
-// import { Signup } from "./Signup";
 
 function App() {
   return (
