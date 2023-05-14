@@ -66,14 +66,14 @@ export function Header() {
                   </a>
                   <ul className="dropdown-menu dropdown-menu-dark">
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="/odds/moneyline">
                         Moneyline
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="/odds/spread">
                         Spread
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
