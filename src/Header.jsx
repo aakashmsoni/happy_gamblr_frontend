@@ -30,7 +30,7 @@ export function Header() {
           >
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-                Welcome,
+                Welcome, {localStorage.user}!
               </h5>
               <button
                 type="button"
