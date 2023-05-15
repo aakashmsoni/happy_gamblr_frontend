@@ -41,6 +41,18 @@ export function Content() {
     return (sumOdds / wagers.length).toFixed(0);
   };
 
+  const handleWinLossCounter = wagers => {
+    let winLoss = [0, 0];
+    wagers.forEach(wager => {
+      if (wager.win == true) {
+        winLoss[0] += 1;
+      } else {
+        winLoss[1] += 1;
+      }
+    });
+    return winLoss;
+  };
+
   const handleShowWager = wager => {
     setIsShowWagerVisible(true);
     setCurrentWager(wager);
@@ -148,7 +160,12 @@ export function Content() {
         <Route
           path="/dashboard"
           element={
-            <Dashboard wagers={wagers} calcTotalProfitLoss={handleTotalProfitLoss} calcAvgOdds={handleAverageOdds} />
+            <Dashboard
+              wagers={wagers}
+              calcTotalProfitLoss={handleTotalProfitLoss}
+              calcAvgOdds={handleAverageOdds}
+              calcWinLoss={handleWinLossCounter}
+            />
           }
         />
         <Route path="/odds/moneyline" element={<MoneylineIndex odds={odds} />} />
