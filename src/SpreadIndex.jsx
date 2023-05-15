@@ -59,7 +59,7 @@ export function SpreadIndex(props) {
                 </td>
               </tr>
               <tr>
-                <caption className="row w-75 ms-0">{moment(game.commence_time).format("lll")}</caption>
+                <caption className="row w-100 ms-0">{moment(game.commence_time).format("lll")}</caption>
               </tr>
             </tbody>
           </table>

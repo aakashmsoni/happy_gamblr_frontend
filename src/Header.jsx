@@ -30,7 +30,7 @@ export function Header() {
           >
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-                Menu
+                Welcome,
               </h5>
               <button
                 type="button"
@@ -42,21 +42,24 @@ export function Header() {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/dashboard">
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" to="/wagerindex">
                     My Bets
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/wagers-new">
-                    Log New Bet
+                  <Link className="nav-link active" to="/wagers-new">
+                    New Bet
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <LogoutLink />
-                </li>
+
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link active dropdown-toggle"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -89,6 +92,9 @@ export function Header() {
                       </div>
                     </li> */}
                   </ul>
+                </li>
+                <li className="nav-item">
+                  <LogoutLink />
                 </li>
               </ul>
             </div>
