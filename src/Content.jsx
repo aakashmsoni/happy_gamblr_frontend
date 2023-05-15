@@ -11,6 +11,7 @@ import { WagerNew } from "./WagerNew";
 import { MoneylineIndex } from "./MoneylineIndex";
 import { SpreadIndex } from "./SpreadIndex";
 import { OverUnderIndex } from "./OverUnderIndex";
+import { Dashboard } from "./Dashboard";
 
 export function Content() {
   const [wagers, setWagers] = useState([]);
@@ -20,6 +21,25 @@ export function Content() {
   const [odds, setOdds] = useState([]);
 
   // const [isCreateWagerVisible, setIsCreateWagerVisible] = useState(false);
+
+  const handleTotalProfitLoss = wagers => {
+    var totalProfitLoss = 0;
+    wagers.forEach(wager => {
+      totalProfitLoss += parseFloat(wager.profit_loss);
+    });
+
+    // console.log(totalProfitLoss.toFixed(2));
+    return totalProfitLoss.toFixed(2);
+  };
+
+  const handleAverageOdds = wagers => {
+    let sumOdds = 0;
+    wagers.forEach(wager => {
+      sumOdds += parseInt(wager.odds);
+    });
+    // console.log((sumOdds / wagers.length).toFixed(0));
+    return (sumOdds / wagers.length).toFixed(0);
+  };
 
   const handleShowWager = wager => {
     setIsShowWagerVisible(true);
@@ -123,6 +143,12 @@ export function Content() {
               onWinColor={handleWinColumnColor}
               onWin={handleWin}
             />
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard wagers={wagers} calcTotalProfitLoss={handleTotalProfitLoss} calcAvgOdds={handleAverageOdds} />
           }
         />
         <Route path="/odds/moneyline" element={<MoneylineIndex odds={odds} />} />
