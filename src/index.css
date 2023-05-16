@@ -5,7 +5,11 @@ html {
 #root {
   background-image: url(./assets/background.jpg);
   background-size: cover;
+  position: relative;
+  background-attachment: fixed;
   min-height: 100vh;
   height: 100%;
+  
+  
 }
 

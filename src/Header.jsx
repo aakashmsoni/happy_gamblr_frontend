@@ -85,8 +85,8 @@ export function Header() {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link active" aria-current="page" to="/wagerindex">
-                        My Bets
+                      <Link className="nav-link active" aria-current="page" to="/wager-index">
+                        Bets Log
                       </Link>
                     </li>
                     <li className="nav-item">

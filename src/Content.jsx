@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { WagerIndex } from "./WagerIndex";
 import { Signup } from "./Signup";
-// import { Login } from "./Login";
 import { Route, Routes } from "react-router-dom";
 import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
@@ -19,8 +18,6 @@ export function Content() {
   const [isDeleteWagerVisible, setIsDeleteWagerVisible] = useState(false);
   const [currentWager, setCurrentWager] = useState([]);
   const [odds, setOdds] = useState([]);
-
-  // const [isCreateWagerVisible, setIsCreateWagerVisible] = useState(false);
 
   const handleTotalProfitLoss = wagers => {
     var totalProfitLoss = 0;
@@ -128,15 +125,7 @@ export function Content() {
   const handleClose = () => {
     setIsShowWagerVisible(false);
     setIsDeleteWagerVisible(false);
-    // setIsSignupVisible(false);
-    // setIsCreateWagerVisible(false);
   };
-
-  // const handleRoot = () => {
-  //   if (localStorage.jwt === undefined) {
-
-  //   }
-  // }
 
   useEffect(handleIndexWagers, []);
   useEffect(handleIndexOdds, []);
@@ -145,9 +134,8 @@ export function Content() {
       <Routes>
         <Route path="/wagers-new" element={<WagerNew onCreateWager={handleCreateWager} />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/" element={<WagerIndex />} /> */}
         <Route
-          path="/wagerindex"
+          path="/wager-index"
           element={
             <WagerIndex
               wagers={wagers}
@@ -180,10 +168,6 @@ export function Content() {
       <Modal show={isDeleteWagerVisible} onClose={handleClose}>
         <WagerDelete wager={currentWager} onDeleteConfirmation={handleDestroyWager} onClose={handleClose} />
       </Modal>
-
-      {/* <Modal show={isCreateWagerVisible} onClose={handleClose}>
-        <WagerNew onCreateWager={handleCreateWager} />
-      </Modal> */}
     </div>
   );
 }

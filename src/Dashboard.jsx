@@ -19,15 +19,25 @@ export function Dashboard(props) {
   };
   return (
     <div id="dashboard">
-      <h1>Dashboard</h1>
+      <h1 className="display-5">Dashboard</h1>
       <div className="card text-bg-secondary border-warning w-50 ms-5 p-3" style={{ height: 350 }}>
-        Total Profit:
-        <div className="card text-bg-light ps-1 text-center border-success" style={{ fontSize: 40, maxWidth: 175 }}>
-          ${props.calcTotalProfitLoss(props.wagers)}
+        <div className="row my-auto">
+          <div className="row m-1">
+            <div
+              className="card text-bg-light mx-5 me-4 text-center border-success"
+              style={{ fontSize: 40, maxWidth: 200 }}
+            >
+              <h6 className="card-header">Total Profit:</h6>
+              <div className="card-body">${props.calcTotalProfitLoss(props.wagers)}</div>
+            </div>
+            {/* <div className="mt-5"> */}
+            <div className="card text-bg-light ms-1 text-center border-success" style={{ fontSize: 40, maxWidth: 175 }}>
+              <h6 className="card-header">Average Odds:</h6>
+              <div className="card-body"> {props.calcAvgOdds(props.wagers)}</div>
+            </div>{" "}
+            {/* </div> */}
+          </div>
         </div>
-        <p>Average Odds: {props.calcAvgOdds(props.wagers)}</p>
-        <p>Wins: {props.calcWinLoss(props.wagers)[0]}</p>
-        <p>Losses: {props.calcWinLoss(props.wagers)[1]}</p>
         <div id="doughnut" style={{ width: 250 }}>
           {/* <Doughnut data={props.calcWinLoss(props.wagers)} /> */}
           <Doughnut data={dataWinLoss} options={{ color: "#000" }} />

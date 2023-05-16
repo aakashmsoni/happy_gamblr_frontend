@@ -49,11 +49,12 @@ export function Login(props) {
                 <input className="form-control" placeholder="password" name="password" type="password" />
                 <label htmlFor="password">Password: </label>
               </div>
-              <button className="btn btn-light btn-outline-success mt-2 mb-2" type="submit">
+              <button className="btn btn-light btn-outline-success mt-2 mb-4" type="submit">
                 Login
               </button>
               <br />
-              <p>or</p>
+              <em>Don't have an account?</em>
+              <br />
               <button className="btn btn-success" onClick={() => props.onSignup(true)} type="button" id="btn">
                 Sign Up
               </button>
