@@ -128,6 +128,7 @@ export function Content() {
   const handleClose = () => {
     setIsShowWagerVisible(false);
     setIsDeleteWagerVisible(false);
+    // setIsSignupVisible(false);
     // setIsCreateWagerVisible(false);
   };
 
@@ -179,6 +180,7 @@ export function Content() {
       <Modal show={isDeleteWagerVisible} onClose={handleClose}>
         <WagerDelete wager={currentWager} onDeleteConfirmation={handleDestroyWager} onClose={handleClose} />
       </Modal>
+
       {/* <Modal show={isCreateWagerVisible} onClose={handleClose}>
         <WagerNew onCreateWager={handleCreateWager} />
       </Modal> */}
