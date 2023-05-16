@@ -6,6 +6,7 @@ import { Login } from "./Login";
 import { useState } from "react";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
+import "./App.scoped.scss";
 
 function App() {
   const [isSignupVisible, setIsSignupVisible] = useState(false);
@@ -17,9 +18,9 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
         {localStorage.jwt === undefined ? (
           <div>
+            <h1>HappyGamblr</h1>
             <Login onSignup={setIsSignupVisible} onClose={handleClose} />
             <Modal show={isSignupVisible} onClose={handleClose}>
               <Signup />
@@ -27,6 +28,7 @@ function App() {
           </div>
         ) : (
           <div>
+            <Header />
             <div className="p-4">
               <Content />
             </div>
