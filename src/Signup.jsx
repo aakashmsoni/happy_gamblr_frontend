@@ -54,9 +54,10 @@ export function Signup() {
         </div>
 
         <button className="btn btn-dark mt-2" type="submit">
-          Signup
+          Create Account
         </button>
       </form>
+      <caption>(Log in after creating account!)</caption>
     </div>
   );
 }

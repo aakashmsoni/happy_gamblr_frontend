@@ -7,7 +7,7 @@ if (jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 }
 
-export function Login() {
+export function Login(props) {
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = event => {
@@ -32,26 +32,31 @@ export function Login() {
 
   return (
     <div id="login">
-      <ul>
-        {errors.map(error => (
-          <li key={error}>{error}</li>
-        ))}
-      </ul>
-      <form onSubmit={handleSubmit}>
-        <div className="form-floating">
-          <input className="form-control" name="email" type="email" placeholder="test@test.com" />
-          <label htmlFor="email">Email: </label>
-        </div>
-
-        <div className="form-floating">
-          <input className="form-control" placeholder="password" name="password" type="password" />
-          <label htmlFor="password">Password: </label>
-        </div>
-
-        <button className="btn btn-dark mt-2" type="submit">
-          Login
-        </button>
-      </form>
+      <div className="card border-primary text-center m-5 p-2 ps-3 pe-3">
+        <ul>
+          {errors.map(error => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+        <form onSubmit={handleSubmit}>
+          <div className="form-floating">
+            <input className="form-control" name="email" type="email" placeholder="test@test.com" />
+            <label htmlFor="email">Email: </label>
+          </div>
+          <div className="form-floating">
+            <input className="form-control" placeholder="password" name="password" type="password" />
+            <label htmlFor="password">Password: </label>
+          </div>
+          <button className="btn btn-outline-success mt-2" type="submit">
+            Login
+          </button>
+          <br />
+          <p>or</p>{" "}
+          <button className="btn btn-success" onClick={() => props.onSignup(true)} type="button" id="btn">
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
