@@ -52,9 +52,9 @@ export function Header() {
                 <div className="offcanvas-body">
                   <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li className="nav-item">
-                      <Link className="nav-link active" aria-current="page" to={setIsSignupVisible}>
+                      <button className="btn btn-light" aria-current="page" onClick={() => setIsSignupVisible(true)}>
                         Create Account
-                      </Link>
+                      </button>
                       <div>
                         <Modal show={isSignupVisible} onClose={handleClose}>
                           <Signup />
