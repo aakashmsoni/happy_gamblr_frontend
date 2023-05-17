@@ -1,6 +1,13 @@
 html {
   background-image: url(./assets/background.jpg); 
   background-size: cover;
+  position: fixed;
   min-height: 100vh;
   height: 100%;
+}
+
+.card {
+  position: relative;
+  top: 20%;
+  left: 20%;
 }

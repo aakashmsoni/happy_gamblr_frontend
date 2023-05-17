@@ -3,14 +3,16 @@ export function WagerShow(props) {
     event.preventDefault();
     const params = new FormData(event.target);
     props.onUpdateWager(params, props.wager.id);
+    console.log(props.wager.id);
     event.target.reset();
+    window.location.href = "/wager-index";
   };
   return (
     <div id="wager-show">
-      <h2>Update Wager</h2>
+      <h2>Update Your Bet</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="sport_id">Update Sport:</label>
+          <label htmlFor="sport_id">Sport:</label>
         </div>
         <div>
           <select name="sport_id" type="number">
@@ -23,7 +25,7 @@ export function WagerShow(props) {
           </select>
         </div>
         <div>
-          <label htmlFor="bet_type_id">Update Bet Type:</label>
+          <label htmlFor="bet_type_id">Bet Type:</label>
         </div>
         <select name="bet_type_id" type="number">
           <option value="1">MONEYLINE</option>
@@ -34,26 +36,26 @@ export function WagerShow(props) {
           <option value="6">ROUND ROBIN</option>
         </select>
         <div>
-          <label htmlFor="wager_amount">Update Wager Amount:</label>
+          <label htmlFor="wager_amount">Wager Amount:</label>
         </div>
         <div>
           <input defaultValue={props.wager.wager_amount} name="wager_amount" type="decimal"></input>
         </div>
         <div>
-          <label htmlFor="odds">Update Odds:</label>
+          <label htmlFor="odds">Odds:</label>
         </div>
         <div>
           <input defaultValue={props.wager.odds} name="odds" type="number"></input>
         </div>
         <div>
-          <label htmlFor="win">Update Win/Loss:</label>
+          <label htmlFor="win">Win/Loss:</label>
         </div>
         <select name="win" type="boolean">
           <option value="true">Win</option>
           <option value="false">Loss</option>
         </select>
         <br />
-        <button className="btn btn-secondary mt-3 me-3" type="submit">
+        <button className="btn btn-secondary mt-3 col-12" type="submit">
           Submit
         </button>
       </form>

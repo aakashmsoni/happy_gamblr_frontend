@@ -9,8 +9,8 @@ export function WagerNew(props) {
   return (
     <div id="wager-new" className="row">
       <div className="col-sm-4 ms-5 mt-5">
-        <div className="card text-center m-5 pb-3 pt-2">
-          <h2>New Wager</h2>
+        <div className="card border-warning text-center m-5 pb-3 pt-2">
+          <h2>New Bet</h2>
           <form onSubmit={handleSubmit}>
             <div>
               <label className="p-1" htmlFor="sport_id">
@@ -68,7 +68,8 @@ export function WagerNew(props) {
             </div>
 
             <br />
-            <button className="btn btn-secondary pb-1" type="submit">
+
+            <button className="btn btn-secondary pb-1 col-6" type="submit">
               Submit
             </button>
           </form>
