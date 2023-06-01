@@ -24,7 +24,7 @@ export function Dashboard(props) {
         <div className="row my-auto">
           <div className="row m-1">
             <div
-              className="card text-bg-light mx-5 me-4 text-center border-success"
+              className="card text-bg-light mx-5 me-4 text-center border-secondary"
               style={{ fontSize: 40, maxWidth: 200 }}
             >
               <h6 className="card-header">Total Profit:</h6>
