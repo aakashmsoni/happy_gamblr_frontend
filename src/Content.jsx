@@ -19,25 +19,25 @@ export function Content() {
   const [currentWager, setCurrentWager] = useState([]);
   const [odds, setOdds] = useState([]);
 
+  // TOTAL PROFIT/LOSS CALC FOR DASHBOARD
   const handleTotalProfitLoss = wagers => {
     var totalProfitLoss = 0;
     wagers.forEach(wager => {
       totalProfitLoss += parseFloat(wager.profit_loss);
     });
-
-    // console.log(totalProfitLoss.toFixed(2));
     return totalProfitLoss.toFixed(2);
   };
 
+  // AVERAGE ODDS CALC FOR DASHBOARD
   const handleAverageOdds = wagers => {
     let sumOdds = 0;
     wagers.forEach(wager => {
       sumOdds += parseInt(wager.odds);
     });
-    // console.log((sumOdds / wagers.length).toFixed(0));
     return (sumOdds / wagers.length).toFixed(0);
   };
 
+  // WIN/LOSS CALC FOR DASHBOARD
   const handleWinLossCounter = wagers => {
     let winLoss = [0, 0];
     wagers.forEach(wager => {
@@ -50,17 +50,20 @@ export function Content() {
     return winLoss;
   };
 
+  // SETS CURRENT WAGER (WAGER INDEX)
   const handleShowWager = wager => {
     setIsShowWagerVisible(true);
     setCurrentWager(wager);
   };
 
+  // DELETE WAGER CONFIRMATION MODAL (WAGER INDEX)
   const handleShowDeleteConfirmation = wager => {
     // console.log(wager);
     setIsDeleteWagerVisible(true);
     setCurrentWager(wager);
   };
 
+  // WAGERS INDEX (USE EFFECT)
   const handleIndexWagers = () => {
     axios.get("http://localhost:3000/wagers.json").then(response => {
       console.log(response);
@@ -68,6 +71,7 @@ export function Content() {
     });
   };
 
+  // 'WHAT ARE THE ODDS?' INDEX (USE EFFECT)
   const handleIndexOdds = () => {
     axios.get("http://localhost:3000/odds.json").then(response => {
       console.log(response);
@@ -75,6 +79,7 @@ export function Content() {
     });
   };
 
+  // WIN COLUMN COLORING (WAGER INDEX)
   const handleWinColumnColor = wager => {
     if (wager.win == true) {
       return "table-success";
@@ -83,6 +88,7 @@ export function Content() {
     }
   };
 
+  // WIN COLUMN OUPUT (WAGER INDEX)
   const handleWin = wager => {
     if (wager.win == true) {
       return "Won";
@@ -91,6 +97,7 @@ export function Content() {
     }
   };
 
+  // CREATE NEW BET (WAGER NEW)
   const handleCreateWager = params => {
     axios.post("http://localhost:3000/wagers.json", params).then(response => {
       console.log(response);
@@ -98,6 +105,7 @@ export function Content() {
     });
   };
 
+  // WAGER UPDATE MODAL (WAGER SHOW)
   const handleUpdateWager = (params, id) => {
     axios.patch(`http://localhost:3000/wagers/${id}.json`, params).then(response => {
       console.log(response);
@@ -114,6 +122,7 @@ export function Content() {
     });
   };
 
+  // DESTROY WAGER (WAGER DELETE)
   const handleDestroyWager = wager => {
     axios.delete(`http://localhost:3000/wagers/${wager.id}.json`).then(response => {
       console.log(response.data);
@@ -122,6 +131,7 @@ export function Content() {
     });
   };
 
+  // MODAL CLOSE
   const handleClose = () => {
     setIsShowWagerVisible(false);
     setIsDeleteWagerVisible(false);
