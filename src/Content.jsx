@@ -7,6 +7,7 @@ import { Modal } from "./Modal";
 import { WagerShow } from "./WagerShow";
 import { WagerDelete } from "./WagerDelete";
 import { WagerNew } from "./WagerNew";
+import { WagerNewConfirmation } from "./WagerNewConfirmation";
 import { MoneylineIndex } from "./MoneylineIndex";
 import { SpreadIndex } from "./SpreadIndex";
 import { OverUnderIndex } from "./OverUnderIndex";
@@ -16,8 +17,16 @@ export function Content() {
   const [wagers, setWagers] = useState([]);
   const [isShowWagerVisible, setIsShowWagerVisible] = useState(false);
   const [isDeleteWagerVisible, setIsDeleteWagerVisible] = useState(false);
+  const [isShowNewWagerVisible, setIsShowNewWagerVisible] = useState(false);
   const [currentWager, setCurrentWager] = useState([]);
   const [odds, setOdds] = useState([]);
+
+  //
+  //
+  //
+  //
+
+  // FORMULAS
 
   // TOTAL PROFIT/LOSS CALC FOR DASHBOARD
   const handleTotalProfitLoss = wagers => {
@@ -49,17 +58,16 @@ export function Content() {
     });
     return winLoss;
   };
+  //
+  //
+  //
+  //
 
-  // SETS CURRENT WAGER (WAGER INDEX)
+  // INDEX
+
+  // SETS CURRENT WAGER
   const handleShowWager = wager => {
     setIsShowWagerVisible(true);
-    setCurrentWager(wager);
-  };
-
-  // DELETE WAGER CONFIRMATION MODAL (WAGER INDEX)
-  const handleShowDeleteConfirmation = wager => {
-    // console.log(wager);
-    setIsDeleteWagerVisible(true);
     setCurrentWager(wager);
   };
 
@@ -79,7 +87,7 @@ export function Content() {
     });
   };
 
-  // WIN COLUMN COLORING (WAGER INDEX)
+  // WIN COLUMN COLORING
   const handleWinColumnColor = wager => {
     if (wager.win == true) {
       return "table-success";
@@ -88,7 +96,7 @@ export function Content() {
     }
   };
 
-  // WIN COLUMN OUPUT (WAGER INDEX)
+  // WIN COLUMN OUPUT
   const handleWin = wager => {
     if (wager.win == true) {
       return "Won";
@@ -97,7 +105,13 @@ export function Content() {
     }
   };
 
-  // CREATE NEW BET (WAGER NEW)
+  //
+  //
+  //
+  //
+  // WAGER NEW
+
+  // CREATE NEW BET
   const handleCreateWager = params => {
     axios.post("http://localhost:3000/wagers.json", params).then(response => {
       console.log(response);
@@ -105,7 +119,35 @@ export function Content() {
     });
   };
 
-  // WAGER UPDATE MODAL (WAGER SHOW)
+  //
+  //
+  //
+  //
+  // WAGER DELETE
+
+  // DESTROY WAGER
+  const handleDestroyWager = wager => {
+    axios.delete(`http://localhost:3000/wagers/${wager.id}.json`).then(response => {
+      console.log(response.data);
+      setWagers(wagers.filter(w => w.id !== wager.id));
+      handleClose();
+    });
+  };
+
+  //
+  //
+  //
+  //
+
+  // MODALS
+
+  // DELETE WAGER CONFIRMATION MODAL
+  const handleShowDeleteConfirmation = wager => {
+    setIsDeleteWagerVisible(true);
+    setCurrentWager(wager);
+  };
+
+  // WAGER UPDATE MODAL
   const handleUpdateWager = (params, id) => {
     axios.patch(`http://localhost:3000/wagers/${id}.json`, params).then(response => {
       console.log(response);
@@ -122,27 +164,25 @@ export function Content() {
     });
   };
 
-  // DESTROY WAGER (WAGER DELETE)
-  const handleDestroyWager = wager => {
-    axios.delete(`http://localhost:3000/wagers/${wager.id}.json`).then(response => {
-      console.log(response.data);
-      setWagers(wagers.filter(w => w.id !== wager.id));
-      handleClose();
-    });
+  // NEW WAGER CONFIRMATION MODAL
+  const handleShowNewConfirmation = params => {
+    setIsShowNewWagerVisible(true);
   };
 
   // MODAL CLOSE
   const handleClose = () => {
     setIsShowWagerVisible(false);
     setIsDeleteWagerVisible(false);
+    setIsShowNewWagerVisible(false);
   };
 
   useEffect(handleIndexWagers, []);
   useEffect(handleIndexOdds, []);
+
   return (
     <div className="m-5">
       <Routes>
-        <Route path="/wagers-new" element={<WagerNew onCreateWager={handleCreateWager} />} />
+        <Route path="/wagers-new" element={<WagerNew onSubmitWager={handleShowNewConfirmation} />} />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/wager-index"
@@ -177,6 +217,9 @@ export function Content() {
       </Modal>
       <Modal show={isDeleteWagerVisible} onClose={handleClose}>
         <WagerDelete wager={currentWager} onDeleteConfirmation={handleDestroyWager} onClose={handleClose} />
+      </Modal>
+      <Modal show={isShowNewWagerVisible} onClose={handleClose}>
+        <WagerNewConfirmation onCreateWager={handleCreateWager} onClose={handleClose} />
       </Modal>
     </div>
   );
