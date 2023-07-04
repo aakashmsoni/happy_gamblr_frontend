@@ -1,9 +1,18 @@
 export function WagerNew(props) {
-  const handleSubmit = event => {
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   const params = new FormData(event.target);
+  //   event.target.reset();
+  //   props.onCreateWager(params);
+
+  // const handleClick = () => {
+  //   console.log(props.wager);
+
+  const handleClick = event => {
     event.preventDefault();
     const params = new FormData(event.target);
-    event.target.reset();
-    props.onCreateWager(params);
+    props.onSubmitWager(params);
+    console.log(params);
   };
 
   return (
@@ -11,7 +20,7 @@ export function WagerNew(props) {
       <div className="col-sm-4 ms-5 mt-5">
         <div className="card border-warning text-center m-5 pb-3 pt-2">
           <h2>New Bet</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleClick}>
             <div>
               <label className="p-1" htmlFor="sport_id">
                 Choose a sport:
